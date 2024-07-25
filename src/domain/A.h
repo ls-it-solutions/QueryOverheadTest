@@ -7,9 +7,11 @@
 #include <QObject>
 #include <QString>
 #include <QVariant>
-
-#include "Base.h"
 #include <QSharedPointer>
+#include <QJsonObject>
+
+#include "B.h"
+#include "Base.h"
 
 namespace domain
 {
@@ -35,6 +37,14 @@ namespace domain
         void setName(QString name) { this->name = name; }
         QSharedPointer<B> getB() { return this->b; }
         void setB(QSharedPointer<B> b) { this->b = b; }
+
+        QJsonObject toJson()
+        {
+            QJsonObject json = Base::toJson();
+            json["name"] = this->name;
+            if (this->b != nullptr) { json["b"] = this->b->toJson(); }
+            return json;
+        }
     };
 } // domain
 

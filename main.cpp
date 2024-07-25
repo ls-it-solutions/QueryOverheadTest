@@ -2,6 +2,7 @@
 #include <QDebug>
 
 #include "src/A.h"
+#include "src/domain/A.h"
 
 int main(int argc, char *argv[]) {
     QCoreApplication a(argc, argv);

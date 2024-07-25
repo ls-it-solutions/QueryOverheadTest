@@ -17,10 +17,10 @@ namespace domain
         Q_OBJECT
 
     public:
-    Q_PROPERTY(QString name READ getName WRITE setName)
+        Q_PROPERTY(QString name READ getName WRITE setName)
 
     protected:
-    QString name;
+        QString name;
 
     public:
         B();
@@ -28,7 +28,14 @@ namespace domain
 
         QString getName() { return this->name; }
 
-        void setName(const QString &name) {this->name = name;};
+        void setName(const QString& name) { this->name = name; };
+
+        QJsonObject toJson()
+        {
+            QJsonObject json = Base::toJson();
+            json["name"] = this->name;
+            return json;
+        }
     };
 } // domain
 

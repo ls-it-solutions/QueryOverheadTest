@@ -4,6 +4,7 @@
 
 #ifndef BASE_H
 #define BASE_H
+#include <QJsonObject>
 #include <QObject>
 #include <QString>
 
@@ -25,6 +26,12 @@ namespace domain
     quint64 getID() { return this->id; };
     void setID(quint64 id) { this->id = id; };
 
+        QJsonObject toJson()
+        {
+            QJsonObject json;
+            json["id"] = QJsonValue::fromVariant(QVariant(this->getID()));
+            return json;
+        }
     };
 }
 #endif //BASE_H

@@ -12,12 +12,12 @@ find_package(Qt5 COMPONENTS
         REQUIRED)
 
 add_executable(OrmTest main.cpp
-        src/A.cpp
-        src/A.h
-        src/B.cpp
-        src/B.h
-        src/Base.cpp
-        src/Base.h)
+        src/domain/A.cpp
+        src/domain/A.h
+        src/domain/B.cpp
+        src/domain/B.h
+        src/domain/Base.cpp
+        src/domain/Base.h)
 target_link_libraries(OrmTest
         Qt5::Core
 )
