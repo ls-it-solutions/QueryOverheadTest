@@ -63,11 +63,11 @@ namespace database
     {
         if (this->db != nullptr) { return; }
 
-        this->db = QSharedPointer<QSqlDatabase>::create(QSqlDatabase::addDatabase("QPSQL", "ormtest"));
+        this->db = QSharedPointer<QSqlDatabase>::create(QSqlDatabase::addDatabase("QPSQL", "QueryOverheadTest"));
         this->db->setHostName("localhost");
         this->db->setUserName("postgres");
         this->db->setPassword("postgres");
-        this->db->setDatabaseName("ormtest");
+        this->db->setDatabaseName("queryoverheadtest");
         this->opened = this-db->open();
     }
 
@@ -76,7 +76,7 @@ namespace database
         if (this->db == nullptr) { return; }
         this->db->close();
         this->db = nullptr;
-        QSqlDatabase::removeDatabase("ormtest");
+        QSqlDatabase::removeDatabase("QueryOverheadTest");
         this->opened = false;
     }
 } // database

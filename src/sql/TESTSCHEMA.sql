@@ -1,11 +1,11 @@
-SELECT 'DROP DATABASE ormtest'
-WHERE EXISTS (SELECT FROM pg_database WHERE datname = 'ormtest')\gexec
+SELECT 'DROP DATABASE queryoverheadtest'
+WHERE EXISTS (SELECT FROM pg_database WHERE datname = 'queryoverheadtest')\gexec
 
 
-SELECT 'CREATE DATABASE ormtest'
-WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'ormtest')\gexec
+SELECT 'CREATE DATABASE queryoverheadtest'
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'queryoverheadtest')\gexec
 
-\c ormtest
+\c queryoverheadtest
 
 -- DROP TABLE IF EXISTS A CASCADE ;
 -- DROP TABLE IF EXISTS B CASCADE ;
