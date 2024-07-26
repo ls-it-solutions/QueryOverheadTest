@@ -9,6 +9,7 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS
         Core
+        Sql
         REQUIRED)
 
 add_executable(OrmTest main.cpp
@@ -22,5 +23,6 @@ add_executable(OrmTest main.cpp
         src/database/Mapper.h)
 target_link_libraries(OrmTest
         Qt5::Core
+        Qt5::Sql
 )
 
