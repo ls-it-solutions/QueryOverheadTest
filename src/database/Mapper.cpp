@@ -20,30 +20,29 @@ namespace database
         this->disconnect();
     }
 
-    QSharedPointer<domain::A> Mapper::query(QString query)
+    QSharedPointer<domain::A> Mapper::query(const QString& query) const
     {
         QSharedPointer<domain::A> result;
         try
         {
-            QSqlQuery sqlQuery = this->db->exec(query);
+            QSqlQuery sqlQuery = QSqlQuery(*this->db);
             sqlQuery.setForwardOnly(true);
+
+            sqlQuery.exec(query);
 
             QSqlError err = sqlQuery.lastError();
             if (err.type() == QSqlError::NoError)
             {
-
                 bool nextResultSet = true;
-                while (nextResultSet) {
-                nextResultSet = sqlQuery.next();
-                }
-                while (sqlQuery.next())
+                bool next;
+                while (nextResultSet && (next = sqlQuery.next()))
                 {
                     result = QSharedPointer<domain::A>(new domain::A());
                     result->setID(sqlQuery.value(0).value<quint64>());
                     result->setName(sqlQuery.value(1).toString());
                 }
-                bool next_result = sqlQuery.nextResult();
-                while (next_result && sqlQuery.next())
+                nextResultSet = sqlQuery.nextResult();
+                while (nextResultSet && (next = sqlQuery.next()))
                 {
                     result->setB(QSharedPointer<domain::B>(new domain::B()));
                     result->getB()->setID(sqlQuery.value(0).value<quint64>());
@@ -75,7 +74,7 @@ namespace database
     {
         if (this->db == nullptr) { return; }
         this->db->close();
-        this->db = nullptr;
+        this->db.clear();
         QSqlDatabase::removeDatabase("QueryOverheadTest");
         this->opened = false;
     }

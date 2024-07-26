@@ -17,7 +17,7 @@ namespace database
         Mapper();
         virtual ~Mapper();
 
-        QSharedPointer<domain::A> query(QString query);
+        QSharedPointer<domain::A> query(const QString& query) const;
 
     private:
         QSharedPointer<QSqlDatabase> db;
