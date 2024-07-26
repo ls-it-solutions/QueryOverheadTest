@@ -20,7 +20,8 @@ is another task
 
 ## Prerequisites
 
-POSTGRESQL database
+* POSTGRESQL database
+* CMAKE
 
 ## setup
 
@@ -29,3 +30,8 @@ psql -U postgres -f src/sql/TESTSCHEMA.sql
 ```
 This will drop and create the database and populate with the needed test data
 
+## build
+
+```shell
+cmake . && make && ./QueryOverheadTest
+```
