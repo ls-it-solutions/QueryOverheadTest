@@ -12,7 +12,7 @@ find_package(Qt5 COMPONENTS
         Sql
         REQUIRED)
 
-add_executable(QueryOverheadTest main.cpp
+add_executable(QueryOverheadTest src/main.cpp
         src/domain/A.cpp
         src/domain/A.h
         src/domain/B.cpp

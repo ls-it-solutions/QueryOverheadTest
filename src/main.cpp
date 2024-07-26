@@ -2,8 +2,8 @@
 #include <QDebug>
 #include <QElapsedTimer>
 
-#include "src/database/Mapper.h"
-#include "src/domain/A.h"
+#include "database/Mapper.h"
+#include "domain/A.h"
 
 int main(int argc, char* argv[])
 {
