@@ -18,18 +18,18 @@ namespace domain
         Q_PROPERTY(quint64 id READ getID WRITE setID)
 
     protected:
-    quint64 id;
+        quint64 id;
 
     public:
-    Base();
-    virtual ~Base();
-    quint64 getID() { return this->id; };
-    void setID(quint64 id) { this->id = id; };
+        Base();
+        virtual ~Base();
+        quint64 getID() { return this->id; };
+        void setID(quint64 id) { this->id = id; };
 
         QJsonObject toJson()
         {
             QJsonObject json;
-            json["id"] = QJsonValue::fromVariant(QVariant(this->getID()));
+            if (this != nullptr) { json["id"] = QJsonValue::fromVariant(QVariant(this->getID())); }
             return json;
         }
     };

@@ -41,8 +41,11 @@ namespace domain
         QJsonObject toJson()
         {
             QJsonObject json = Base::toJson();
-            json["name"] = this->name;
-            if (this->b != nullptr) { json["b"] = this->b->toJson(); }
+            if (this != nullptr)
+            {
+                json["name"] = this->name;
+                if (this->b != nullptr) { json["b"] = this->b->toJson(); }
+            }
             return json;
         }
     };
